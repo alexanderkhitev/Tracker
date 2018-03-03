@@ -19,18 +19,30 @@ class LocationManager: NSObject {
     static let shared = LocationManager()
     
     
-    private let cllocationManager = CLLocationManager()
+    private let manager = CLLocationManager()
     
     
     private func setupSettings() {
-        cllocationManager.delegate = self
-        cllocationManager.activityType = .other
-        cllocationManager.allowsBackgroundLocationUpdates = true
-        cllocationManager.requestAlwaysAuthorization()
+        manager.delegate = self
+        manager.activityType = .other
+        manager.allowsBackgroundLocationUpdates = true
     }
     
     open func start() {
-        cllocationManager.startUpdatingLocation()
+        let status = CLLocationManager.authorizationStatus()
+        switch status {
+        case .authorizedAlways:
+            manager.startUpdatingLocation()
+            manager.startMonitoringSignificantLocationChanges()
+            manager.allowsBackgroundLocationUpdates = true
+        case .authorizedWhenInUse:
+            manager.requestAlwaysAuthorization()
+            manager.startUpdatingLocation()
+        case .restricted, .notDetermined:
+            manager.requestAlwaysAuthorization()
+        case .denied:
+            break
+        }
     }
     
 }
@@ -40,8 +52,6 @@ class LocationManager: NSObject {
 extension LocationManager: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let last = locations.last else { return }
-        debugPrint("last", last.course)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

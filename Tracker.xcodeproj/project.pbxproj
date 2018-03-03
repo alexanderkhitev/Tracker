@@ -369,6 +369,11 @@
 					5A1D4CFC204ACBD900705614 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					5A1D4D10204ACBD900705614 = {
 						CreatedOnToolsVersion = 9.2;

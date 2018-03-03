@@ -16,8 +16,7 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-//        MotionManager.shared.launch()
-        LocationManager.shared.start()
+        MotionManager.shared.launch()
         debugPrint("InterfaceController awake")
     }
     
