@@ -16,6 +16,9 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
+//        MotionManager.shared.launch()
+        LocationManager.shared.start()
+        debugPrint("InterfaceController awake")
     }
     
     override func willActivate() {

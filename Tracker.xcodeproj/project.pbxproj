@@ -23,6 +23,10 @@
 		5A1D4D48204ACC4800705614 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D4D47204ACC4800705614 /* ComplicationController.swift */; };
 		5A1D4D4A204ACC4800705614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A1D4D49204ACC4800705614 /* Assets.xcassets */; };
 		5A1D4D4F204ACC4900705614 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5A1D4D30204ACC4800705614 /* Watch.app */; };
+		5A1D4D5A204ACD2200705614 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D4D59204ACD2200705614 /* MotionManager.swift */; };
+		5AE9B09E204AEE2200E82615 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE9B09D204AEE2200E82615 /* DoubleExtension.swift */; };
+		5AE9B0A1204AF41200E82615 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE9B0A0204AF41200E82615 /* LocationManager.swift */; };
+		5AE9B0A4204AF94400E82615 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE9B0A3204AF94400E82615 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +111,10 @@
 		5A1D4D49204ACC4800705614 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A1D4D4B204ACC4800705614 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A1D4D4C204ACC4800705614 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		5A1D4D59204ACD2200705614 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		5AE9B09D204AEE2200E82615 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		5AE9B0A0204AF41200E82615 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		5AE9B0A3204AF94400E82615 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +176,7 @@
 		5A1D4CFF204ACBD900705614 /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				5AE9B0A2204AF93A00E82615 /* LocationGroup */,
 				5A1D4D00204ACBD900705614 /* AppDelegate.swift */,
 				5A1D4D02204ACBD900705614 /* ViewController.swift */,
 				5A1D4D04204ACBD900705614 /* Main.storyboard */,
@@ -209,6 +218,9 @@
 		5A1D4D40204ACC4800705614 /* Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				5AE9B09C204AEE1700E82615 /* Extensions */,
+				5AE9B09F204AF40100E82615 /* LocationGroup */,
+				5A1D4D58204ACD1400705614 /* MotionGroup */,
 				5A1D4D41204ACC4800705614 /* InterfaceController.swift */,
 				5A1D4D43204ACC4800705614 /* ExtensionDelegate.swift */,
 				5A1D4D45204ACC4800705614 /* NotificationController.swift */,
@@ -218,6 +230,38 @@
 				5A1D4D4C204ACC4800705614 /* PushNotificationPayload.apns */,
 			);
 			path = "Watch Extension";
+			sourceTree = "<group>";
+		};
+		5A1D4D58204ACD1400705614 /* MotionGroup */ = {
+			isa = PBXGroup;
+			children = (
+				5A1D4D59204ACD2200705614 /* MotionManager.swift */,
+			);
+			path = MotionGroup;
+			sourceTree = "<group>";
+		};
+		5AE9B09C204AEE1700E82615 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5AE9B09D204AEE2200E82615 /* DoubleExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5AE9B09F204AF40100E82615 /* LocationGroup */ = {
+			isa = PBXGroup;
+			children = (
+				5AE9B0A0204AF41200E82615 /* LocationManager.swift */,
+			);
+			path = LocationGroup;
+			sourceTree = "<group>";
+		};
+		5AE9B0A2204AF93A00E82615 /* LocationGroup */ = {
+			isa = PBXGroup;
+			children = (
+				5AE9B0A3204AF94400E82615 /* LocationManager.swift */,
+			);
+			path = LocationGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +387,11 @@
 					5A1D4D3B204ACC4800705614 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes.watchos.extension = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -419,6 +468,7 @@
 			files = (
 				5A1D4D03204ACBD900705614 /* ViewController.swift in Sources */,
 				5A1D4D01204ACBD900705614 /* AppDelegate.swift in Sources */,
+				5AE9B0A4204AF94400E82615 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +492,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AE9B09E204AEE2200E82615 /* DoubleExtension.swift in Sources */,
 				5A1D4D46204ACC4800705614 /* NotificationController.swift in Sources */,
+				5A1D4D5A204ACD2200705614 /* MotionManager.swift in Sources */,
+				5AE9B0A1204AF41200E82615 /* LocationManager.swift in Sources */,
 				5A1D4D48204ACC4800705614 /* ComplicationController.swift in Sources */,
 				5A1D4D44204ACC4800705614 /* ExtensionDelegate.swift in Sources */,
 				5A1D4D42204ACC4800705614 /* InterfaceController.swift in Sources */,
