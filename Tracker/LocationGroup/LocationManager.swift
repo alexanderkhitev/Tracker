@@ -23,6 +23,8 @@ class LocationManager: NSObject {
     
     
     private func setupSettings() {
+        manager.startUpdatingHeading()
+        
         manager.delegate = self
         manager.activityType = .other
         manager.allowsBackgroundLocationUpdates = true

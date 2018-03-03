@@ -28,9 +28,10 @@ class MotionManager {
     // MARK: - Settings
     
     private func setupSettings() {
-        cmotionManager.gyroUpdateInterval = 1
-        cmotionManager.accelerometerUpdateInterval = 1
-        cmotionManager.deviceMotionUpdateInterval = 30
+        let updateInterval: Double = 10
+        cmotionManager.gyroUpdateInterval = updateInterval
+        cmotionManager.accelerometerUpdateInterval = updateInterval
+        cmotionManager.deviceMotionUpdateInterval = updateInterval
     }
     
     // MARK: - Gyro
@@ -43,9 +44,22 @@ class MotionManager {
             let x = _deviceMotion.rotationRate.x.degrees()
             let y = _deviceMotion.rotationRate.y.degrees()
             let z = _deviceMotion.rotationRate.z.degrees()
-            debugPrint(x, y, z)
+            debugPrint("Motion", x, y, z)
         }
     }
     
+    private func startAccelerometer() {
+        cmotionManager.startAccelerometerUpdates(to: .main) { (data, error) in
+            guard let _data = data else { return }
+            debugPrint("startAccelerometer", _data.acceleration)
+        }
+    }
+    
+    private func startGyro() {
+        cmotionManager.startGyroUpdates(to: .main) { (data, error) in
+            guard let _data = data else { return }
+            debugPrint("Gyro", _data)
+        }
+    }
     
 }
